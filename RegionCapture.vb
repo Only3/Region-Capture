@@ -6,7 +6,8 @@ Class RegionCapture
     Sub New()
         DoubleBuffered = True
         Show()
-        Opacity = 0.4 : TopMost = True
+        Opacity = 0.4
+        TopMost = True
         FormBorderStyle = FormBorderStyle.None
         WindowState = FormWindowState.Maximized
     End Sub
@@ -23,18 +24,21 @@ Class RegionCapture
     End Sub
     Protected Overrides Sub OnMouseDown(e As MouseEventArgs)
         Draw = True
-        SX = e.X : SY = e.Y
+        SX = e.X
+        SY = e.Y
         MyBase.OnMouseDown(e)
     End Sub
     Protected Overrides Sub OnMouseMove(e As MouseEventArgs)
         If Draw Then
-            CX = e.X : CY = e.Y
+            CX = e.X
+            CY = e.Y
             Invalidate()
         End If
         MyBase.OnMouseMove(e)
     End Sub
     Protected Overrides Sub OnMouseUp(e As MouseEventArgs)
-        Draw = False : Opacity = 0
+        Draw = False
+        Opacity = 0
         Dim Bm = New Bitmap(Rect.Width, Rect.Height) ', Imaging.PixelFormat.Format32bppArgb)
         Dim G As Graphics = Graphics.FromImage(Bm)
         G.CopyFromScreen(Rect.X, Rect.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy)
