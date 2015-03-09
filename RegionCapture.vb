@@ -5,6 +5,8 @@ Class RegionCapture
 
     Sub New()
         DoubleBuffered = True
+        WindowState = FormWindowState.Minimized
+        Cursor = Cursors.Cross
         Show()
         Opacity = 0.4
         TopMost = True
@@ -37,9 +39,10 @@ Class RegionCapture
         MyBase.OnMouseMove(e)
     End Sub
     Protected Overrides Sub OnMouseUp(e As MouseEventArgs)
+        Cursor = Cursors.Default
         Draw = False
         Opacity = 0
-        Dim Bm = New Bitmap(Rect.Width, Rect.Height) ', Imaging.PixelFormat.Format32bppArgb)
+        Dim Bm As New Bitmap(Rect.Width, Rect.Height) ', Imaging.PixelFormat.Format32bppArgb)
         Dim G As Graphics = Graphics.FromImage(Bm)
         G.CopyFromScreen(Rect.X, Rect.Y, 0, 0, Screen.PrimaryScreen.Bounds.Size, CopyPixelOperation.SourceCopy)
         Bm.Save(SaveName, Imaging.ImageFormat.Png)
