@@ -1,3 +1,4 @@
+
 Class RegionCapture
     Inherits Form
 
