@@ -51,7 +51,7 @@ Class RegionCapture
         MyBase.OnMouseUp(e)
     End Sub
     Protected Overrides Sub OnKeyDown(e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then Me.Close()
+        If e.KeyCode = Keys.Escape Then Close()
         MyBase.OnKeyDown(e)
     End Sub
 End Class
